@@ -9,3 +9,5 @@ pytest-mock
 freezegun
 pytest-cov
 coveralls
+
+flake8
