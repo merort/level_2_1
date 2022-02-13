@@ -4,13 +4,13 @@ import os
 import sqlite3
 import sys
 from pathlib import Path
-from typing import Optional, Set, re, Callable, Union, Collection, Mapping, Any
+from typing import Optional, Set, Callable, Union, Collection, Mapping, Any
 
 import deal as deal
 from PIL import UnidentifiedImageError
 from chardet import detect
 from pytz import timezone as check_timezone
-import pytz.exceptions
+import pytz
 import xlrd
 from openpyxl import Workbook, load_workbook
 
