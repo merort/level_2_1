@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/merort/level_2_1/badge.svg?branch=master)](https://coveralls.io/github/merort/level_2_1?branch=master)
 # Testing sandbox level 2.1
 
 Welcome to the testing sandbox: practice-driven testing instrument.
