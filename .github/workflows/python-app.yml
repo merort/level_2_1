@@ -30,8 +30,11 @@ jobs:
       run: |
         python -m pytest --cov=code --cov-report xml tests
 
+    - name: Generate lcov report
+      run: coverage lcov
+
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: coverage.xml
+        path-to-lcov: coverage.lcov

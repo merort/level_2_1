@@ -8,4 +8,4 @@ pytest
 pytest-mock
 freezegun
 pytest-cov
-genbadge
+coveralls
