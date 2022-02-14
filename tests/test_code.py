@@ -15,20 +15,8 @@ def test__set_listed_at(mocker: MockerFixture):
 
 
 def test_load_obscene_words(mocker: MockerFixture):
-    def fetchall():
-        return [['first', 'second', 'third']]
-
-    def execute(query: str):
-            return mocker.Mock(fetchall=fetchall)
-
-    def cursor():
-        return mocker.Mock(execute=execute)
-
-    connection = mocker.Mock(cursor=cursor)
-
-    def connect(path):
-        return connection
-
-    sqlite = mocker.Mock(connect=connect)
+    sqlite = mocker.Mock()
+    obscene_words = [['first', 'second', 'third']]
+    sqlite.connect.return_value.cursor.return_value.execute.return_value.fetchall.return_value = obscene_words
     mocker.patch('code.sqlite3', sqlite)
     assert code.load_obscene_words('path') == {'first', 'second', 'third'}
