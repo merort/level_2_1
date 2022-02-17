@@ -45,3 +45,17 @@ def test_get_all_filepathes_recursively(mocker: MockerFixture, source_path, expe
     mocker.patch('code.Path.glob', fake_glob)
 
     assert code.get_all_filepathes_recursively(source_path, 'so') == [expected_path]
+
+
+def test_get_content_from_file_without_guessing(mocker: MockerFixture):
+    mocker.patch('builtins.open', mocker.mock_open(read_data='read data'))
+    content = code.get_content_from_file('filepath', guess_encoding=False)
+    assert content == 'read data'
+
+
+def test_get_content_from_file_raising(mocker: MockerFixture):
+    def bad_read(*args):
+        raise UnicodeDecodeError('utf-8', b'', 0, 0, 'Error')
+    mocker.patch('builtins.open', bad_read)
+    content = code.get_content_from_file('path', guess_encoding=False)
+    assert content is None
